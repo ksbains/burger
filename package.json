@@ -1,0 +1,26 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Full Stack, first project with Handlebars.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksbains/burger.git"
+  },
+  "author": "Karanbir Bains",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ksbains/burger/issues"
+  },
+  "homepage": "https://github.com/ksbains/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-mysql": "0.0.1",
+    "moment": "^2.19.1"
+  }
+}

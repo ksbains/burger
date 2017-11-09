@@ -1,0 +1,50 @@
+<div class="jumbotron text-center">
+ 	<h1>Eat-Da-Burger</h1>
+	<img src="../../public/assets/img/burger.png">
+</div>
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class= "col-md-4 col-sm-4 col-xs-4" id="toEat">
+		<!-- this is where the data will get dynamically added -->
+		{{#each burgers}}
+			{{#if devourded}}
+			{{else}}
+				<div>
+					<label id="burgerId">{{ id }}</label>
+					<label>{{ name }}</label>
+					<label>{{ created_at }}</label>
+					<button id="eatMe">EAT ME!!</button>
+				</div>
+			{{/if}}
+		{{/each}}
+
+		<div class= "col-md-4 col-sm-4 col-xs-4" id=formDiv>
+			<form class="create-form">
+			  <div class="form-group">
+			    <label for="burger">Burger Name:</label>
+			    <input type="text" id="burger" name="name">
+			  </div>
+			  <button type="submit" id="burgerAdd">Add burger</button>
+			</form>
+			<p>Enter a burger you want to eat and then click the submit button</p>
+		</div>
+		
+		<div class= "col-md-4 col-sm-4 col-xs-4" id="ate">
+			{{#each burgers}}
+			{{#if devourded}}
+				<div>
+					<label>{{ id }}</label>
+					<label>{{ name }}</label>
+					<label>{{ created_at }}</label>
+				</div>
+			{{/if}}
+		{{/each}}
+		</div>
+	</div>
+</div>
+
