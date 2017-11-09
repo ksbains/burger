@@ -1,7 +1,7 @@
 //this is where the code for the conncection will go, 
 //need to export the object or the function. just one connection so prob just object
 
-
+// need to make the table before tdoing anything else. 
 // Require mysql
 var mysql = require("mysql");
 
@@ -21,6 +21,7 @@ connection.connect(function(err) {
     return;
   }
   console.log("connected as id " + connection.threadId);
+//connection.query(CREATE TABLE IF NOT EXISTS burgers);
 });
 
 // Export connection
