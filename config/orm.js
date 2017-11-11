@@ -13,12 +13,20 @@ var orm = {
     });
   },
   insertOne: function(table, burgerName, date,  cb) {
-    var queryString = "INSERT INTO ?? (burgerName) VALUES (??, ??)";
+    console.log("orm call: table, burger_name, date,  cb", table, burgerName, date);
+    var queryString = "INSERT INTO ?? (burger_name, created_at) VALUES ('??', '??')";
     connection.query(queryString, [table, burgerName, date], function(err, result) {
-      if(err) throw err;
-      console.log("the result of insertOne orm call: ");
-      console.log(result);
-      cb(result);
+      if(err){
+        console.log(err);
+        throw err;
+      } 
+      var data = {
+        id: result.insertId,
+        burger_name: burgerName,
+        devoured: false,
+        created_at: data
+      };
+      cb(data);
     });
   },
   updateOne: function(table, id, devoured, cb) {

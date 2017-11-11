@@ -9,6 +9,6 @@ CREATE TABLE burgers
 	id INT NOT NULL AUTO_INCREMENT,
 	burger_name VARCHAR(255) NOT NULL,
 	devoured TINYINT(1) DEFAULT 0,
-	created_at DATETIME NOT NULL,
+	created_at VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 );

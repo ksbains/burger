@@ -32,26 +32,35 @@ app.get("/index/burgers", function(req,res){
 	 var temp = null;
    burger1.selectAll(function(data){
 	 	temp = data;
+    //console.log("the data is", data);
 	 for (var i = 0; i < temp.length; i++) {
-      var burgerToPush = new burger();
-      burgerToPush.setValues(temp[i].id, temp[i].name, temp[i].devoured, temp[i].created_at); 
+      var burgerToPush = {
+        id: temp[i].id, 
+        burger_name: temp[i].burger_name,
+        devoured: temp[i].devoured, 
+        created_at: temp[i].created_at
+      }
+      //burgerToPush.setValues(temp[i].id, temp[i].burger_name, temp[i].devoured, temp[i].created_at); 
       burgers.push(burgerToPush);
     }
+    console.log("about to render", burgers);
+    res.render("index", burgers);
     });
-    // res.send(burgers);
-	res.render("index", burgers);
+   //res.render("index", burgers);
 });
 
 app.post("/index/burgers", function(req, res) {
   var burgerToAdd = new burger();
-  burgerToAdd.insertOne(req.body.name, function(data){
-  	 res.json(
+  burgerToAdd.insertOne(req.body.burger_name, function(data){
+  	 
+     res.json(
   	 	{ 
   	 		id: data.id,
   	 		burger_name: data.burger_name,
   	 		devoured: data.devoured,
   	 		created_at: data.created_at
   	 	});
+     res.end();
   });
 });
 

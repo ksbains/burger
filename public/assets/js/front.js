@@ -1,6 +1,8 @@
 //$(function() {
   //attach to the devour button
+$(document).ready(function(){
   $("#eatMe").on("click", function(event) {
+    console.log("inide the eatMe call");
     var idFront = $("#burgerId").html();
     var ate = true;
 
@@ -13,7 +15,7 @@
     $.ajax("/index/burgers:" + id, {
       type: "PUT",
       data: burger
-    }).then(
+    }).done(
       function() {
         console.log("changed devoured to", ate);
         // Reload the page to get the updated list
@@ -23,24 +25,25 @@
     );
   });
 
-  $(".create-form").on("submit", function(event) {
+  $("#burgerAdd").on("click", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
+    console.log("inide the burgerAdd call");
 
     var burger = {
-      name: $("#burger").val().trim(),
+      burger_name: $("#burger").val().trim(),
     };
+  
 
     // Send the POST request.
     $.ajax("/index/burgers", {
       type: "POST",
       data: burger
-    }).then(
-      function() {
-        console.log("created new burger");
-        // Reload the page to get the updated list
+    }).done(
+      function(res) {
+        console.log("created new burger", res);
         location.reload();
       }
     );
   });
-//});
+});
